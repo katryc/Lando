@@ -2,9 +2,9 @@
 var React = require('react-native');
 var styles = React.StyleSheet.create({
   text: {
-    color: 'white',
+    color: '#eeff41',
     backgroundColor: '#e040fb',
-    fontSize: 30,
+    fontSize: 50,
     margin: 100
   },
   container: {
