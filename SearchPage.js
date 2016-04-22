@@ -91,6 +91,7 @@ onSearchTextChanged(event) {
         <TextInput
           style={styles.searchInput}
           value={this.state.searchString}
+          onChange={this.onSearchTextChanged.bind(this)}
           placeholder='Search via name or postcode'/>
         <TouchableHighlight style={styles.button}
             underlayColor='#ea80fc'>
