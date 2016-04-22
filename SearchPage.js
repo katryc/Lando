@@ -88,7 +88,8 @@ class SearchPage extends Component {
 super(props);
 this.state = {
  searchString: 'london',
- isLoading: false
+ isLoading: false,
+ message: ''
 };
 }
 
@@ -100,6 +101,14 @@ this.state = {
   _executeQuery(query) {
     console.log(query);
     this.setState({ isLoading: true });
+    fetch(query)
+	  .then(response => response.json())
+	  .then(json => this._handleResponse(json.response))
+	  .catch(error =>
+	     this.setState({
+	      isLoading: false,
+	      message: 'Something bad happened ' + error
+	   }));
   }
 
   onSearchPressed() {
