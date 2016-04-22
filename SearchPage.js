@@ -68,7 +68,8 @@ class SearchPage extends Component {
   constructor(props) {
 super(props);
 this.state = {
- searchString: 'london'
+ searchString: 'london',
+ isLoading: false
 };
 }
 onSearchTextChanged(event) {
@@ -78,6 +79,7 @@ onSearchTextChanged(event) {
 }
 
   render() {
+
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
@@ -93,11 +95,13 @@ onSearchTextChanged(event) {
           value={this.state.searchString}
           onChange={this.onSearchTextChanged.bind(this)}
           placeholder='Search via name or postcode'/>
+
         <TouchableHighlight style={styles.button}
             underlayColor='#ea80fc'>
           <Text style={styles.buttonText}>Go</Text>
         </TouchableHighlight>
       </View>
+
       <TouchableHighlight style={styles.button}
           underlayColor='#ea80fc'>
         <Text style={styles.buttonText}>Location</Text>
