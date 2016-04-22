@@ -54,7 +54,7 @@ searchInput: {
   borderWidth: 1,
   borderColor: '#aa00ff',
   borderRadius: 8,
-  color: '#48BBEC'
+  color: '#656565'
 },
   image: {
    width: 217,
@@ -101,6 +101,7 @@ this.state = {
   _executeQuery(query) {
     console.log(query);
     this.setState({ isLoading: true });
+
     fetch(query)
 	  .then(response => response.json())
 	  .then(json => this._handleResponse(json.response))
@@ -110,14 +111,14 @@ this.state = {
 	      message: 'Something bad happened ' + error
 	   }));
   }
-  _handleResponse(response) {
-    this.setState({ isLoading: false , message: '' });
-    if (response.application_response_code.substr(0, 1) === '1') {
-      console.log('Properties found: ' + response.listings.length);
-    } else {
-      this.setState({ message: 'Location not recognized; please try again.'});
+    _handleResponse(response) {
+      this.setState({ isLoading: false , message: '' });
+      if (response.application_response_code.substr(0, 1) === '1') {
+        console.log('Properties found: ' + response.listings.length);
+      } else {
+        this.setState({ message: 'Location not recognized; please try again.'});
+      }
     }
-  }
 
   onSearchPressed() {
     var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
