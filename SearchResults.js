@@ -42,3 +42,4 @@ class SearchResults extends Component {
   }
 
 }
+module.exports = SearchResults;
