@@ -110,6 +110,14 @@ this.state = {
 	      message: 'Something bad happened ' + error
 	   }));
   }
+  _handleResponse(response) {
+    this.setState({ isLoading: false , message: '' });
+    if (response.application_response_code.substr(0, 1) === '1') {
+      console.log('Properties found: ' + response.listings.length);
+    } else {
+      this.setState({ message: 'Location not recognized; please try again.'});
+    }
+  }
 
   onSearchPressed() {
     var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
