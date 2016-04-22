@@ -55,6 +55,13 @@ searchInput: {
   borderColor: '#aa00ff',
   borderRadius: 8,
   color: '#48BBEC'
+},
+  image: {
+   width: 217,
+   height: 138,
+   borderWidth: 1,
+   borderColor: '#ea80fc',
+   borderRadius: 8
 }
 });
 class SearchPage extends Component {
@@ -81,6 +88,7 @@ class SearchPage extends Component {
           underlayColor='#ea80fc'>
         <Text style={styles.buttonText}>Location</Text>
       </TouchableHighlight>
+      <Image source={require('./Resources/house.png')} style={styles.image}/>
       </View>
     );
   }
