@@ -48,18 +48,30 @@ class SearchResults extends Component {
       dataSource: dataSource.cloneWithRows(this.props.listings)
     };
   }
-
-  renderRow(rowData, sectionID, rowID) {
-    return (
-      <TouchableHighlight
-          underlayColor='#dddddd'>
-        <View>
-          <Text>{rowData.title}</Text>
-        </View>
-      </TouchableHighlight>
-    );
+  rowPressed(propertyGuid) {
+  var property = this.props.listings.filter(prop => prop.guid === propertyGuid)[0];
   }
 
+  renderRow(rowData, sectionID, rowID) {
+  var price = rowData.price_formatted.split(' ')[0];
+
+  return (
+    <TouchableHighlight onPress={() => this.rowPressed(rowData.guid)}
+        underlayColor='#dddddd'>
+      <View>
+        <View style={styles.rowContainer}>
+          <Image style={styles.thumb} source={{ uri: rowData.img_url }} />
+          <View  style={styles.textContainer}>
+            <Text style={styles.price}>£{price}</Text>
+            <Text style={styles.title}
+                  numberOfLines={1}>{rowData.title}</Text>
+          </View>
+        </View>
+        <View style={styles.separator}/>
+      </View>
+    </TouchableHighlight>
+   );
+  }
   render() {
     return (
       <ListView
