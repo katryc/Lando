@@ -72,14 +72,27 @@ this.state = {
  isLoading: false
 };
 }
+
 onSearchTextChanged(event) {
   console.log('onSearchTextChanged');
   this.setState({ searchString: event.nativeEvent.text });
   console.log(this.state.searchString);
 }
+_executeQuery(query) {
+  console.log(query);
+  this.setState({ isLoading: true });
+}
+
+onSearchPressed() {
+  var query = urlForQueryAndPage('place_name', this.state.searchString, 1);
+  this._executeQuery(query);
+}
 
   render() {
-
+    var spinner = this.state.isLoading ?
+  ( <ActivityIndicatorIOS
+      size='large'/> ) :
+  ( <View/>);
     return (
       <View style={styles.container}>
         <Text style={styles.description}>
@@ -107,6 +120,7 @@ onSearchTextChanged(event) {
         <Text style={styles.buttonText}>Location</Text>
       </TouchableHighlight>
       <Image source={require('./Resources/house.png')} style={styles.image}/>
+      {spinner}
       </View>
     );
   }
