@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var PropertyView = require('./PropertyView');
 var {
   StyleSheet,
   Image,
